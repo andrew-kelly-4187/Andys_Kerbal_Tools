@@ -405,3 +405,4 @@ eeloo_angularmomentum = 313858820776261
 
 canonical_DU = 13599840256
 canonical_TU = 732734.722
+canonical_VU = 18560.387338
