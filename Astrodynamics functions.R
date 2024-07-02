@@ -40,8 +40,33 @@ fn_dotprod <- function(a,b){
 }
 
 #------------------------------------------------------------------#
+# Numerical method functions                                    ####
+#------------------------------------------------------------------#
+
+#### Newton Raphson solver for Kepler's equation
+fn_kepler <- function(M, e){
+  # Initial guess at E
+  E = M
+  
+  h = (E-abs(e)*sin(E)-M) / (1-abs(e)*cos(E))
+  
+  i=0 # Counter to escape if the loop doesn't terminate
+  while (abs(h) >= 0.0001){
+    E = E - h
+    h = (E-abs(e)*sin(E)-M) / (1-abs(e)*cos(E))
+    i = i+1
+    if(i>40){
+      cat("ERROR: Solver failed to converge")
+      break
+    }
+  }
+  return(E)
+}
+
+#------------------------------------------------------------------#
 # Astrodynamics functions                                       ####
 #------------------------------------------------------------------#
 
 # 
+
 
