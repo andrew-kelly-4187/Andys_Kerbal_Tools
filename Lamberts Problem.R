@@ -96,6 +96,6 @@ v1 = (B+A)*uc - (B-A)*u1
 v2 = (B+A)*uc - (B-A)*u2
 
 # Delta-V changes required
-dv1 = fn_veclength(v1 - (v_Kerbin)/canonical_VU)
-dv2 = fn_veclength(v2 - (v_Duna)/canonical_VU)
+dv1 = abs(fn_veclength(v1 - (v_Kerbin)/canonical_VU))
+dv2 = abs(fn_veclength(v2 - (v_Duna)/canonical_VU))
 dv_total <- (dv1 + dv2) * canonical_VU
