@@ -402,3 +402,6 @@ eeloo_siderealrotationvelocity = 67.804 #m/s
 eeloo_synchronousorbit = 683.69 #m
 eeloo_soi = 119082900 #m
 eeloo_angularmomentum = 313858820776261
+
+canonical_DU = 13599840256
+canonical_TU = 732734.722
