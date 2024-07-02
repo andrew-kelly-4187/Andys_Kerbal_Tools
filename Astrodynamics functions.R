@@ -67,6 +67,49 @@ fn_kepler <- function(M, e){
 # Astrodynamics functions                                       ####
 #------------------------------------------------------------------#
 
-# 
+#### findxy
+# Computes all x, y for single and multi-revolution solutions
+
+
+
+
+#### Lambert's problem solver
+# This is the Izzo algoritm
+# https://www.esa.int/gsp/ACT/doc/MAD/pub/ACT-RPR-MAD-2014-RevisitingLambertProblem.pdf
+
+fn_Lambert <- function(r1_vec, r2_vec, t, mu){
+  
+  # Check for incorrect inputs
+  if(length(r1_vec) != 3 | length(r2_vec) != 3){
+    stop("ERROR: r_1 and r_2 must be vectors of length 3")
+  }
+  
+  if(t < 0 | mu < 0){
+    stop("ERROR: t and mu must be greater than zero")
+  }
+  
+  c_vec = r2_vec - r1_vec
+  c = fn_veclength(c_vec)
+  r1 = fn_veclength(r1_vec)
+  r2 = fn_veclength(r2_vec)
+  s = 0.5 * (r1 + r2 + c)
+  i_hat_r1 = r1_vec/r1
+  i_hat_r2 = r2_vec/r2
+  i_hat_h = fn_crossprod(i_hat_r1, i_hat_r2)
+  lambda = sqrt(1-c/s)
+  
+  if(r1_vec[1]*r2_vec[2]-r1_vec[2]*r2_vec[1] <0){
+    lambda = -lambda
+    i_hat_t1 = fn_crossprod(i_hat_r1, i_hat_h)
+    i_hat_t2 = fn_crossprod(i_hat_r2, i_hat_r2)
+  } else {
+    i_hat_t1 = fn_crossprod(i_hat_h, i_hat_r1)
+    i_hat_t2 = fn_crossprod(i_hat_h, i_hat_h)
+  }
+  TimeT = t * sqrt(2*mu/(s^3))
+  
+  
+}
+  
 
 
